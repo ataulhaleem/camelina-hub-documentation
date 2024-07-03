@@ -6,9 +6,9 @@ const withNextra = require('nextra')({
 module.exports = withNextra({
   output: 'export',
   basePath: '/camelina-hub-documentation',
-  trailingSlash: true,
-  assetPrefix: '/',
+  // trailingSlash: true,
+  // assetPrefix: '/',
   images: {
-    unoptimized: true,
+    unoptimized: true
   },
 });
