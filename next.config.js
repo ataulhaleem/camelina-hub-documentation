@@ -6,8 +6,8 @@ const withNextra = require('nextra')({
 module.exports = withNextra({
   output: 'export',
   basePath: '/documentation',
-  trailingSlash: true,
-  assetPrefix: '/',
+  // trailingSlash: true,
+  // assetPrefix: '/',
   images: {
     unoptimized: true
   },
