@@ -7,7 +7,7 @@ module.exports = withNextra({
   output: 'export',
   basePath: '/documentation',
   // trailingSlash: true,
-  // assetPrefix: '/',
+  assetPrefix: '/',
   images: {
     unoptimized: true
   },
