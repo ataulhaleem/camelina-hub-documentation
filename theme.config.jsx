@@ -1,7 +1,7 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
-// import Image from './components/Image';
+import Image from './components/Image';
 
 
 export default  {
@@ -36,9 +36,9 @@ export default  {
   },
 
 
-  // mdxComponents: {
-  //   img: Image
-  // }
+  mdxComponents: {
+    img: Image
+  }
 }
 
 // export default config
