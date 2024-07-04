@@ -14,22 +14,95 @@ import Image from '../../../components/Image'
 
 #### GWAS analysis without correction for population structure:
 
-    This approach utilizes the --assoc option in plink, likely performing a simple chi-square test for each SNP to assess its association with the chosen camelina phenotype (trait) data.
-    No explicit correction for population stratification is applied. This method can be faster but is susceptible to identifying false positives due to ancestry differences.
+This approach utilizes the `--assoc` option in PLINK, which likely performs a simple chi-square test for each SNP (single nucleotide polymorphism) to assess its association with the chosen camelina phenotype (trait) data. 
+No explicit correction for population stratification is applied in this method. While this can be faster, it is susceptible to identifying false positives due to ancestry differences. 
+
+To perform the GWAS analysis without correction for population structure, the WebAssembly module runs the following command in the background of your browser
+
+```bash
+plink \
+    --bfile plink \
+    --assoc \
+    --allow-no-sex 
+```
+
+Here is an explanation of each flag used in the command:
+
+
+| Flag    | value     | Environment     | 
+| :--------: | :------------:   | :------------   | 
+| --bfile   |  plink | This flag specifies the base name of the binary fileset. In PLINK, a binary fileset typically consists of three files: .bed (binary genotype file), .bim (binary SNP information file), and .fam (family information file). By providing the base name plink, the module knows to look for plink.bed, plink.bim, and plink.fam|
+| --assoc | -- | This flag tells PLINK to perform a basic case/control association test, which is a chi-square test for each SNP. This test examines whether allele frequencies at each SNP differ significantly between cases (individuals with the phenotype) and controls (individuals without the phenotype). If the phenotype is quantitative PLINK will automatically treat the analysis as a quantitative trait analysis and apply regression model.|
+| --allow-no-sex | -- | This flag allows PLINK to proceed with the analysis even if some individuals have unknown sex information. In genetic studies, sex is often a critical covariate, but for some datasets or specific analyses, it may be permissible to ignore this information. |
+
+
+##### Important Considerations
+
+    <b>Population Stratification: </b>
+    As mentioned earlier, this method does not correct for population stratification. 
+    Therefore, any significant associations found may be influenced by underlying population structure. 
+    This means that some associations could be false positives, resulting from differences in ancestry rather than a true genetic association with the trait.
+
+    <b> Data Quality: </b> The is preprocessed for minor allele frequency (>= 0.05), Missingness per SNP ( < 0.1), quality score at SNP site ( >= 20) and a min depth ( >= 3).
+
+    <b> Interpretation of Results: </b> Always be cautious when interpreting GWAS results without population structure correction.
+    It is recommended to validate significant findings using independent datasets or additional methods that account for population stratification.
+
+
 
 #### GWAS analysis with correction for population structure:
 
     This approach employs a linear regression model (--linear) with covariate adjustments (--covar).
-    Additional principal components (PCs) or eigenvectors from a separate analysis are included as covariates. These components capture genetic variations due to ancestry and are used to account for population structure in the association test.
+    Additional principal components (PCs) or eigenvectors from a separate analysis are included as covariates. 
+    These components capture genetic variations due to ancestry and are used to account for population structure in the association test.
     This method is more robust and helps to reduce spurious associations arising from population stratification.
+
+
+To perform the GWAS analysis with correction for population structure, the WebAssembly module runs the following command in the background of your browser
+
+
+```bash
+plink \
+    --bfile plink \
+    --linear \
+    --covar plink.cov \
+    --covar-name COV1,COV2 \
+    --allow-no-sex \
+    --standard-beta \
+    --hide-covar 
+```
+
+Here is an explanation of each flag used in the command:
+
+| Flag    | value     | Environment     | 
+| :----------------: | :------------:   | :------------   | 
+|--bfile | plink | This flag specifies the base name of the binary fileset. In PLINK, a binary fileset typically consists of three files: .bed (binary genotype file), .bim (binary SNP information file), and .fam (family information file). By providing the base name plink, the module knows to look for plink.bed, plink.bim, and plink.fam.|
+|--linear | -- | This flag tells PLINK to perform a linear regression analysis, which models the relationship between each SNP and the phenotype while adjusting for covariates. This approach helps in controlling for confounding variables.|
+|--covar | plink.cov | This flag specifies the file containing covariates to be included in the regression model. In this case, plink.cov is the file that contains the first two principal components (PCs) derived from a separate analysis.|
+|--covar-name | COV1,COV2 | This flag specifies the names of the covariates in the plink.cov file that should be included in the analysis. Here, COV1 and COV2 are the first two principal components used to correct for population structure.|
+|--allow-no-sex | -- | This flag allows PLINK to proceed with the analysis even if some individuals have unknown sex information. In genetic studies, sex is often a critical covariate, but for some datasets or specific analyses, it may be permissible to ignore this information.|
+|--standard-beta | -- | This flag outputs standardized regression coefficients, which can be useful for comparing the effects of different SNPs on the phenotype.|
+|--hide-covar | -- | This flag suppresses the output of covariate effects in the results, focusing the output on the SNP associations.|
+
+
+#### Important Considerations
+
+<b> Population Stratification: </b> This method corrects for population stratification by including principal components as covariates. 
+This helps reduce false positives due to underlying population structure, leading to more reliable associations.
+
+<b> Data Quality: </b> It follows the same quality measures for the data as outlined above.
+
+<b> Interpretation of Results: </b>  
+Always interpret GWAS results cautiously. 
+Even with population structure correction, it is recommended to validate significant findings using independent datasets or additional methods.
+
+
+
 
 #### Phenotype Data Selection:
 
     The application also offers flexibility by allowing users to select various camelina phenotype datasets for GWAS analysis. This enables researchers to investigate the genetic underpinnings of different traits in camelina.
 
-#### Additional Notes:
-
-    ---
 
 
 #### How to perform GWAS in your browser:
