@@ -5,7 +5,7 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   output: 'export',
-  basePath: '/documentation',
+  basePath: '/camelina-hub-documentation',
   // trailingSlash: true,
   // assetPrefix: '/',
   images: {
