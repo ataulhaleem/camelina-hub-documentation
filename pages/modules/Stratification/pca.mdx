@@ -15,15 +15,20 @@ The PCA analysis is performed using genotype data and PLINK v1.90b7 64-bit (16 J
 The following PLINK command is executed to perform the PCA analysis:
 
 ```bash
-plink --bfile plink --out pca --pca 2
+plink \
+--bfile plink \
+--out pca \
+--pca 2
+```
 
 Explanation of the flags used
 
---bfile plink: Specifies the base name of the binary fileset (BED, BIM, and FAM files) to be used.
---out pca: Specifies the base name for the output files.
---pca 2: Computes the first two principal components for visualization.
+| Flag    | value     | Environment     | 
+| :----------------: | :------------:   | :------------   | 
+| --bfile | plink | Specifies the base name of the binary fileset (BED, BIM, and FAM files) to be used. |
+| --out | pca | Specifies the base name for the output files.|
+| --pca | 2 | Computes the first two principal components for visualization.|
 
-```
 
 ### Visualization
 The PCA plot is visualized using a custom JavaScript component, which colors the points based on their geographic origin. This enhances the interpretability of the plot by allowing users to see how genetic variation correlates with geographic location.

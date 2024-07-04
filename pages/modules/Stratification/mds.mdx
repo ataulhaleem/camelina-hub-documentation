@@ -15,17 +15,25 @@ The MDS analysis is performed using genotype data and the PLINK WebAssembly modu
 The following PLINK command is executed to perform the MDS analysis:
 
 ```bash
-plink --bfile plink --read-genome plink.genome --cluster --K 5 --mds-plot 2 
+plink \
+--bfile plink \
+--read-genome plink.genome \
+--cluster \
+--K 5 \
+--mds-plot 2 
+
+```
 
 Explanation of the flags used
 
---bfile plink: Specifies the base name of the binary fileset (BED, BIM, and FAM files) to be used.
---read-genome plink.genome: Reads the genome file containing pairwise IBS (Identity by State) distance information.
---cluster: Performs clustering on the genotype data.
---K 5: Specifies that the number of clusters (K) to be identified is 5.
---mds-plot 2: Generates a 2-dimensional MDS plot
+| Flag    | value     | Environment     | 
+| :----------------: | :------------:   | :------------   | 
+| --bfile | plink | Specifies the base name of the binary fileset (BED, BIM, and FAM files) to be used. |
+| --read-genome | plink.genome | Reads the genome file containing pairwise IBS (Identity by State) distance information.|
+| --cluster | -- | Performs clustering on the genotype data. |
+| --K | 5 | Specifies that the number of clusters (K) to be identified is 5. |
+| --mds-plot | 2 | Generates a 2-dimensional MDS plot |
 
-```
 ### Visualization
 
 The result of the MDS analysis is a plot that visualizes the genetic distances between samples in two dimensions. The plot below shows five clusters based on IBS distance, highlighting the genetic relationships within the dataset.
