@@ -1,20 +1,20 @@
 import Image from 'next/image'
 
-## Genome browser
+## Genome Browser
 
 The JBrowse module in our application provides an interactive genome browser, 
-integrating various genomic data sources for detailed analysis and visualization. 
+integrating various genomic data sources for a detailed analysis and visualization. 
 
 ### Integrated Data Sources
 
 #### 1. Gene Models
-The gene models are sourced from Plant Ensembl genomes, providing comprehensive annotation of gene structures, including exons, introns, and untranslated regions (UTRs).
+The gene models are sourced from [Plant Ensembl](http://plants.ensembl.org/index.html) genomes, providing comprehensive annotation of gene structures, including exons, introns, and untranslated regions (UTRs).
 
 #### 2. Variant Tracks
-Variant tracks for 54 accessions of Camelina plants are integrated into JBrowse, allowing users to explore genetic variation across different cultivars.
+Variant tracks for 54 accessions of camelina plants are integrated into JBrowse, allowing users to explore genetic variation across different cultivars.
 
-#### 3. RNAseq Data
-RNAseq data for 135 accessions are available, enabling the visualization of gene expression levels across various tissues and conditions.
+#### 3. RNA-seq Data
+RNA-seq data for 135 accessions is available, enabling the visualization of gene expression levels across various tissues and conditions.
 
 ### Accessions Overview
 
@@ -31,7 +31,7 @@ The JBrowse module includes data for the following accessions:
 
 ### Tissue Samples Overview
 
-The RNAseq data includes samples from 12 different tissues, providing a comprehensive view of gene expression across various parts of the plant:
+The RNA-seq data includes samples from 12 different tissues, providing a comprehensive view of gene expression across various parts of the plant:
 
 | Tissue          | Number of Samples |
 |-----------------|-------------------|
@@ -49,14 +49,15 @@ The RNAseq data includes samples from 12 different tissues, providing a comprehe
 | Youngleaf       | 3                 |
 | NA              | 10                |
 
-NOTE: NA refers to the corresponding Cultivar or tissue information is missing on the sample
+NOTE: NA refers to the corresponding cultivar or tissue information missing on the sample.
+
 ### Usage
 
 The JBrowse module allows users to:
 
 - **Navigate the Genome**: Browse through the genomic regions, zoom in/out, and explore gene models and variant locations.
 - **Visualize Variants**: Examine genetic variants across different accessions, compare their positions, and study their potential effects on gene function.
-- **Explore Gene Expression**: View RNAseq data across multiple tissues, analyze expression patterns, and identify differentially expressed genes.
+- **Explore Gene Expression**: View RNA-seq data across multiple tissues, analyze expression patterns, and identify differentially expressed genes.
 
 Below are some example images demonstrating the capabilities of the JBrowse module:
 
