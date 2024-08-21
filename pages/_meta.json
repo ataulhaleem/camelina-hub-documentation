@@ -4,6 +4,7 @@
   "modules":  "Functional Modules",
   "api": "API Documentation",
   "developers": "For developers",
+  "SFTP" : "UNTWIST SFTP",
   "about": {
     "title": "About",
     "type": "page"
