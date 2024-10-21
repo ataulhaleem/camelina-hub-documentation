@@ -10,7 +10,7 @@ export default  {
       <>
 <Image src='/FAV-32.png' alt="Hello" width={20} height={20} />
           <span style={{marginLeft : '0.3em', fontWeight: 1000, fontSize : 25 }}>
-          Camelina-hub documentation
+          Plant Adaptation Hub documentation
         </span>
       </>
     ),
@@ -32,7 +32,7 @@ export default  {
   },
   docsRepositoryBase: 'https://github.com/usadellab/untwistApp/tree/documentation',
   footer: {
-    text: 'Camelina-hub documentation',
+    text: 'Plant Adaptation Hub documentation',
   },
 
 
