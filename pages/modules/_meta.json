@@ -1,5 +1,6 @@
 {
   "GWAS": "GWAS",
   "Phenology": "Phenology",
-  "Stratification":  "Population Stratification"
+  "Stratification":  "Population Stratification",
+  "ginfo" : "Genome Informatics"
 }
